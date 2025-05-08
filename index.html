@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Star Pattern Generator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 min-h-screen flex items-center justify-center p-4">
+
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-xl p-8 space-y-6">
+    <h2 class="text-3xl font-bold text-center text-gray-800">⭐ Star Pattern Generator</h2>
+
+    <div>
+      <label for="here" class="block text-sm font-semibold text-gray-700 mb-2">Enter a Number</label>
+      <input type="number" id="here" placeholder="e.g. 5"
+             class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-4">
+      <button onclick="star()" class="bg-indigo-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-indigo-700 transition">
+        Square Star
+      </button>
+      <button onclick="printStar()" class="bg-purple-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-purple-700 transition">
+        Triangle Star
+      </button>
+      <button onclick="oppositeStar()" class="bg-pink-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-pink-700 transition">
+        Reverse Triangle
+      </button>
+      <button onclick="sonStar()" class="bg-yellow-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-yellow-700 transition">
+        Hollow Square
+      </button>
+      <button onclick="xparttern()" class="bg-yellow-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-yellow-700 transition">
+         x-parttern
+      </button>
+      <button onclick=" rounde()" class="bg-yellow-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-yellow-700 transition">
+        rounde-parttern
+     </button>
+   
+    <div id="enter" class="bg-gray-100 p-4 rounded-md shadow-inner min-h-[120px] text-gray-800 font-mono whitespace-pre text-center text-lg leading-7">
+      <!-- Output appears here -->
+    </div>
+  </div>
+
+  <script>
+    function star() {
+      document.getElementById("enter").innerHTML = "";
+      let num = parseInt(document.getElementById("here").value);
+      for (let i = 1; i <= num; i++) {
+        let row = "   ";
+        for (let j = 1; j <= num; j++) {
+          row += "*  ";
+        }
+        document.getElementById("enter").innerHTML += row + "<br>";
+      }
+    }
+
+    function printStar() {
+      document.getElementById("enter").innerHTML = "";
+      let num = parseInt(document.getElementById("here").value);
+      for (let i = 0; i <= num; i++) {
+        let row = "";
+        for (let j = 0; j <= i; j++) {
+          row += "* ";
+        }
+        document.getElementById("enter").innerHTML += row + "<br>";
+      }
+    }
+
+    function oppositeStar() {
+      document.getElementById("enter").innerHTML = "";
+      let num = parseInt(document.getElementById("here").value);
+      for (let i = num; i >= 0; i--) {
+        let row = "";
+        for (let j = 0; j <= i; j++) {
+          row += "* ";
+        }
+        document.getElementById("enter").innerHTML += row + "<br>";
+      }
+    }
+
+    function sonStar() {
+      document.getElementById("enter").innerHTML = "";
+      let num = parseInt(document.getElementById("here").value);
+      for (let i = 1; i <= num; i++) {
+        let row = "";
+        for (let j = 1; j <= num; j++) {
+          if (i === 1 || i === num || j === 1 || j === num) {
+            row += "*  ";
+          } else {
+            row += "   ";
+          }
+        }
+        document.getElementById("enter").innerHTML += row + "<br>";
+      }
+    }
+
+
+    function xparttern() {
+      document.getElementById("enter").innerHTML = "";
+      let num = parseInt(document.getElementById("here").value);
+      for (let i = 1; i <= num; i++) {
+        let row = "";
+        for (let j = 1; j <= num; j++) {
+          if ( i === j || i + j === num + 1) {
+            row += "*  ";
+          } else {
+            row += "   ";
+          }
+        }
+        document.getElementById("enter").innerHTML += row + "<br>";
+      }
+    }
+    function rounde() {
+  document.getElementById("enter").innerHTML = "";
+  let num = parseInt(document.getElementById("here").value);
+  let radius = num / 2;
+  let center = radius;
+
+  for (let i = 0; i <= num; i++) {
+    let row = "";
+    for (let j = 0; j <= num; j++) {
+      let distance = Math.sqrt((i - center) ** 2 + (j - center) ** 2);
+      if (distance > radius - 0.5 && distance < radius + 0.5) {
+        row += "* ";
+      } else {
+        row += "&nbsp;&nbsp;";
+      }
+    }
+    document.getElementById("enter").innerHTML += row + "<br>";
+  }
+}
+
+  </script>
+
+</body>
+</html>
